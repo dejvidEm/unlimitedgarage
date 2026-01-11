@@ -23,6 +23,12 @@ const services = [
     description:
       "Inštalácia a úprava ambientného osvetlenia interiéru pre lepšiu atmosféru a individuálny štýl vozidla.",
   },
+  {
+    icon: Lightbulb,
+    title: "Hviezdny strop",
+    description:
+      "Inštalácia hviezdneho stropu pre lepšiu atmosféru a individuálny štýl vozidla.",
+  },
 ]
 
 export function ServicesSection() {
