@@ -86,7 +86,7 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/50 z-[100]"
+              className="fixed inset-0 bg-black/50 z-[999999999999999] z-[100]"
               onClick={() => setIsOpen(false)}
             />
             <motion.div
