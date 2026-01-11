@@ -2,30 +2,26 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { Droplets, Sofa, Car, Sparkles } from "lucide-react"
+import { Droplets, Sofa, Car, Sparkles, Wrench, Lightbulb } from "lucide-react"
 
 const services = [
   {
-    icon: Sofa,
-    title: "Hĺbkové čistenie interiéru",
-    description: "Kompletné vysávanie, ošetrenie palubnej dosky a dezinfekcia povrchov pre dokonale čistú kabínu.",
+    icon: Lightbulb,
+    title: "Opravy a repasy svetiel",
+    description:
+      "Diagnostika, oprava a obnova predných aj zadných svetiel vrátane zlepšenia funkčnosti a vzhľadu.",
   },
   {
-    icon: Droplets,
-    title: "Extrakcia čalúnenia",
+    icon: Wrench,
+    title: "LED prestavby a výmeny",
     description:
-      "Profesionálna extrakcia horúcou vodou pre látkové sedadlá a koberce, odstránenie hlboko usadených škvŕn a pachov.",
-  },
-  {
-    icon: Car,
-    title: "Rohožky a kufor",
-    description:
-      "Dôkladné čistenie všetkých podlahových rohoží a priestoru kufra vrátane odstránenia škvŕn a ošetrenia.",
+      "Profesionálna výmena pôvodného osvetlenia za moderné LED riešenia s dôrazom na výkon, životnosť a dizajn.",
   },
   {
     icon: Sparkles,
-    title: "Ručné umytie exteriéru",
-    description: "Šetrné ručné umytie metódou dvoch vedier, čistenie kolies a ošetrenie pneumatík pre výstavný lesk.",
+    title: "Ambientné osvetlenie",
+    description:
+      "Inštalácia a úprava ambientného osvetlenia interiéru pre lepšiu atmosféru a individuálny štýl vozidla.",
   },
 ]
 
@@ -44,7 +40,7 @@ export function ServicesSection() {
         >
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-balance">Čo ponúkame</h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-pretty">
-            Prémiové detailingové služby prispôsobené vášmu vozidlu, dodané priamo k vám.
+            Prémiové služby prispôsobené vášmu vozidlu, dodané v dokonalej kvalite a presnosti.
           </p>
         </motion.div>
 

@@ -7,52 +7,45 @@ import { Sparkles, Shield, Clock, Award, Star } from "lucide-react"
 
 const galleryItems = [
   {
-    image: "/luxury-black-car-exterior-detailing-shine.jpg",
-    title: "Exteriérový Detailing",
+    image: "/ambient2.png",
+    title: "Ambientné osvetlenie",
     badge: "Najpopulárnejšie",
     badgeIcon: Award,
     className: "md:col-span-2 md:row-span-2",
   },
   {
-    image: "/premium-car-interior-leather-cleaning.jpg",
-    title: "Interiérová Starostlivosť",
+    image: "/strop.png",
+    title: "Kvalitná práca",
     badge: "Hĺbkové čistenie",
     badgeIcon: Sparkles,
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    image: "/ceramic-coating-application.png",
-    title: "Keramická Ochrana",
+    image: "/svetlo.png",
+    title: "Repas svetlometov",
     badge: "5 rokov záruka",
     badgeIcon: Shield,
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    image: "/car-paint-correction.png",
-    title: "Korekcia Laku",
+    image: "/svetlo2.png",
+    title: "Výmena žiaroviek za LED",
     badge: "Expresná služba",
     badgeIcon: Clock,
     className: "md:col-span-1 md:row-span-2",
   },
   {
-    image: "/luxury-car-wheel-rim-detailing.jpg",
-    title: "Starostlivosť o Disky",
+    image: "/svetlo3.png",
+    title: "Repas svetlometov",
     badge: "Prémiové ošetrenie",
     badgeIcon: Sparkles,
     className: "md:col-span-2 md:row-span-1",
   },
   {
-    image: "/car-engine-bay-detailing-cleaning.jpg",
-    title: "Motorový Priestor",
+    image: "/volant.png",
+    title: "Ambientné osvetlenie",
     badge: "Profesionálna práca",
     badgeIcon: Award,
-    className: "md:col-span-1 md:row-span-1",
-  },
-  {
-    image: "/premium-car-headlight-restoration-polishing.jpg",
-    title: "Renovácia Svetlometov",
-    badge: "Top služba",
-    badgeIcon: Star,
     className: "md:col-span-1 md:row-span-1",
   },
 ]
@@ -160,7 +153,7 @@ export function GallerySection() {
 
         <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[250px] gap-4">
           {galleryItems.map((item, index) => (
-            <GalleryCard key={item.title} item={item} index={index} />
+            <GalleryCard key={item.image} item={item} index={index} />
           ))}
         </div>
 

@@ -122,6 +122,14 @@ export function Navbar() {
                       {link.label}
                     </button>
                   ))}
+                  <div className="pt-4 border-t border-border">
+                    <a
+                      href="tel:+421951300838"
+                      className="text-lg font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-2"
+                    >
+                      +421-951-300-838
+                    </a>
+                  </div>
                   <Button onClick={() => scrollToSection("#contact")} className="mt-6 rounded-full w-full" size="lg">
                     Objednať sa
                   </Button>

@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/hero-section"
 import { Statistics } from "@/components/statistics"
 import { ServicesSection } from "@/components/services-section"
 import { GallerySection } from "@/components/gallery-section"
+import { AwardSection } from "@/components/award-section"
 import { ReviewsSection } from "@/components/reviews-section"
 import { PricingSection } from "@/components/pricing-section"
 import { ContactSection } from "@/components/contact-section"
@@ -17,9 +18,10 @@ export default function Home() {
       <Statistics />
       <ServicesSection />
       <GallerySection />
-      <section className="py-0 bg-background">
-        <TextReveal className="h-[200vh]">
-          Precision meets passion. Every detail matters. Excellence in every finish.
+      <AwardSection />
+      <section className="py-0 bg-background md:hidden">
+        <TextReveal className="h-[120vh] md:h-[200vh]">
+        Keď sa spojí technika, cit pre detail a kvalitná práca, vzniká rozdiel, ktorý vidíš na prvý pohľad
         </TextReveal>
       </section>
       <ReviewsSection />

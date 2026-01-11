@@ -1,9 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { useTheme } from "next-themes"
-import { Moon, Sun, MapPin, Phone, Mail } from "lucide-react"
-import { Switch } from "@/components/ui/switch"
+import { MapPin, Phone, Mail } from "lucide-react"
 import { Facebook, Instagram, Twitter } from "lucide-react"
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -36,101 +33,9 @@ const socialLinks = [
 ]
 
 export function Footer() {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
     element?.scrollIntoView({ behavior: "smooth" })
-  }
-
-  if (!mounted) {
-    return (
-      <footer className="py-12 border-t border-border bg-background">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            {/* Company Info */}
-            <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">Unlimited garage</h3>
-              <p className="text-sm text-muted-foreground mb-2">IČO: 12345678</p>
-              <p className="text-sm text-muted-foreground">Prémiové mobilné detailingové služby</p>
-            </div>
-            {/* Address */}
-            <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">Kontakt</h3>
-              <div className="space-y-3 text-sm text-muted-foreground">
-                <div className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
-                  <p>Hlavná 123<br />Bratislava, 811 01</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                  <a href="tel:+421912345678" className="hover:text-primary transition-colors">+421 912 345 678</a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-                  <a href="mailto:info@unlimitedgarage.sk" className="hover:text-primary transition-colors">info@unlimitedgarage.sk</a>
-                </div>
-              </div>
-            </div>
-            {/* Page Sections */}
-            <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">Navigácia</h3>
-              <ul className="space-y-2">
-                {pageSections.map((section) => (
-                  <li key={section.href}>
-                    <button
-                      onClick={() => scrollToSection(section.href)}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors text-left"
-                    >
-                      {section.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* Social Media & Theme */}
-            <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">Sledujte nás</h3>
-              <div className="flex gap-3 mb-6">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon
-                  return (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      className="w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-background transition-colors text-muted-foreground"
-                      aria-label={social.label}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </a>
-                  )
-                })}
-              </div>
-              <div className="flex items-center gap-2">
-                <Sun className="w-4 h-4 text-muted-foreground" />
-                <Switch
-                  checked={true}
-                  disabled
-                  aria-label="Prepnúť medzi svetlým a tmavým režimom"
-                />
-                <Moon className="w-4 h-4 text-muted-foreground" />
-              </div>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Unlimited garage. Všetky práva vyhradené.
-            </p>
-            <p className="text-sm text-muted-foreground">IČO: 12345678 | DIČ: SK1234567890</p>
-          </div>
-        </div>
-      </footer>
-    )
   }
 
   return (
@@ -140,8 +45,10 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-4">Unlimited garage</h3>
-            <p className="text-sm text-muted-foreground mb-2">IČO: 12345678</p>
-            <p className="text-sm text-muted-foreground">Prémiové mobilné detailingové služby</p>
+            <p className="text-sm text-muted-foreground mb-2">IČO: 56496362</p>
+            <p className="text-sm text-muted-foreground mb-2">DIČ: 11299942283</p>
+            <p className="text-sm text-muted-foreground mb-2">Prémiové mobilné detailingové služby</p>
+            <p className="text-sm text-muted-foreground">Otváracie hodiny: 08:30-16:00</p>
           </div>
 
           {/* Address */}
@@ -150,11 +57,21 @@ export function Footer() {
             <div className="space-y-3 text-sm text-muted-foreground">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
-                <p>Hlavná 123<br />Bratislava, 811 01</p>
+                <div>
+                  <p className="font-medium mb-1">Sídlo:</p>
+                  <p>Jesenskeho 3000/58<br />92601 Sered</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
+                <div>
+                  <p className="font-medium mb-1">Adresa prevádzky:</p>
+                  <p>29.Augusta 1646/6<br />92401 Galanta<br /><span className="text-xs">(Areal za uradom prace)</span></p>
+                </div>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                <a href="tel:+421912345678" className="hover:text-primary transition-colors">+421 912 345 678</a>
+                <a href="tel:+421951300838" className="hover:text-primary transition-colors">+421-951-300-838</a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
@@ -180,10 +97,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Social Media & Theme */}
+          {/* Social Media */}
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-4">Sledujte nás</h3>
-            <div className="flex gap-3 mb-6">
+            <div className="flex gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon
                 return (
@@ -198,15 +115,6 @@ export function Footer() {
                 )
               })}
             </div>
-            <div className="flex items-center gap-2">
-              <Sun className="w-4 h-4 text-muted-foreground" />
-              <Switch
-                checked={theme === "dark"}
-                onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
-                aria-label="Prepnúť medzi svetlým a tmavým režimom"
-              />
-              <Moon className="w-4 h-4 text-muted-foreground" />
-            </div>
           </div>
         </div>
 
@@ -214,7 +122,7 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Unlimited garage. Všetky práva vyhradené.
           </p>
-          <p className="text-sm text-muted-foreground">IČO: 12345678 | DIČ: SK1234567890</p>
+          <p className="text-sm text-muted-foreground">IČO: 56496362 | DIČ: 11299942283</p>
         </div>
       </div>
     </footer>

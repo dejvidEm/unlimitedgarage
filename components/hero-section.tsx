@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Facebook, Instagram, Twitter } from "lucide-react"
+import { Facebook, Instagram } from "lucide-react"
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -10,18 +10,10 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
-const TelegramIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.559z" />
-  </svg>
-)
-
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
   { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
   { icon: WhatsAppIcon, href: "#", label: "WhatsApp" },
-  { icon: TelegramIcon, href: "#", label: "Telegram" },
 ]
 
 export function HeroSection() {
@@ -43,6 +35,23 @@ export function HeroSection() {
         className="hidden lg:flex absolute inset-0 items-start justify-end z-20 pt-20"
       >
         <div className="relative h-full flex items-start justify-end">
+          {/* Award Card - Behind Car */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="absolute right-[15%] top-[45%] z-0 bg-card/95 backdrop-blur-sm border-2 border-primary/30 rounded-xl p-4 shadow-lg flex items-center gap-3"
+          >
+            <img
+              src="/zlata_firma.png"
+              alt="Zlatá firma"
+              className="w-12 h-12 object-contain flex-shrink-0"
+            />
+            <p className="text-sm font-semibold text-foreground whitespace-nowrap">
+              Zlatá firma roka 2025
+            </p>
+          </motion.div>
+          
           <img
             src="/main_pic.png"
             alt="Luxury car"
@@ -63,7 +72,7 @@ export function HeroSection() {
           {/* Dark Overlay Block Behind Text */}
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
           
-          <div className="w-full max-w-2xl mx-auto px-6 lg:px-12 pt-24 pb-12 lg:pt-32 lg:pb-20 relative z-10">
+          <div className="w-full max-w-2xl mx-auto px-6 lg:px-12 pt-32 pb-12 lg:pt-32 lg:pb-20 relative z-10">
             {/* Social Media Icons - Desktop: Left Side Vertical, Mobile: Top Horizontal */}
             <div className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 flex-col items-center gap-4 px-4 z-20">
               {/* Vertical line above */}
@@ -162,13 +171,14 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="lg:hidden flex items-center justify-center py-8 relative z-10"
+        className="lg:hidden flex items-center justify-center py-8 relative z-[9999]"
       >
         <div className="relative w-full flex items-center justify-center px-6">
           <img
             src="/main_pic.png"
             alt="Luxury car"
             className="h-64 w-auto object-contain"
+            style={{ transform: "translateY(-8rem)" }}
           />
         </div>
       </motion.div>
