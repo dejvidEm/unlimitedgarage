@@ -47,7 +47,6 @@ export function Footer() {
             <h3 className="text-lg font-semibold text-foreground mb-4">Unlimited garage</h3>
             <p className="text-sm text-muted-foreground mb-2">IČO: 56496362</p>
             <p className="text-sm text-muted-foreground mb-2">DIČ: 11299942283</p>
-            <p className="text-sm text-muted-foreground mb-2">Prémiové mobilné detailingové služby</p>
             <p className="text-sm text-muted-foreground">Otváracie hodiny: 08:30-16:00</p>
           </div>
 
