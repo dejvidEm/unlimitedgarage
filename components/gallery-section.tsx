@@ -15,15 +15,15 @@ const galleryItems = [
   },
   {
     image: "/strop.png",
-    title: "Kvalitná práca",
-    badge: "Hĺbkové čistenie",
+    title: "Hviezdny strop",
+    badge: "Inštalácia",
     badgeIcon: Sparkles,
     className: "md:col-span-1 md:row-span-1",
   },
   {
     image: "/svetlo.png",
     title: "Repas svetlometov",
-    badge: "5 rokov záruka",
+    badge: "Záruka 1 rok",
     badgeIcon: Shield,
     className: "md:col-span-1 md:row-span-1",
   },

@@ -4,6 +4,7 @@ import { Statistics } from "@/components/statistics"
 import { ServicesSection } from "@/components/services-section"
 import { GallerySection } from "@/components/gallery-section"
 import { AwardSection } from "@/components/award-section"
+import { OrlySection } from "@/components/orly-section"
 import { ReviewsSection } from "@/components/reviews-section"
 import { PricingSection } from "@/components/pricing-section"
 import { ContactSection } from "@/components/contact-section"
@@ -19,6 +20,7 @@ export default function Home() {
       <ServicesSection />
       <GallerySection />
       <AwardSection />
+      <OrlySection />
       <section className="py-0 bg-background md:hidden">
         <TextReveal className="h-[120vh] md:h-[200vh]">
         Keď sa spojí technika, cit pre detail a kvalitná práca, vzniká rozdiel, ktorý vidíš na prvý pohľad

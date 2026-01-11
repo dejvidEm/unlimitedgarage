@@ -116,10 +116,22 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="text-lg sm:text-xl text-white/90 mb-10 max-w-xl leading-relaxed"
+                className="text-lg sm:text-xl text-white/90 mb-6 max-w-xl leading-relaxed"
               >
                 Presná práca, ktorá mení viditeľnosť aj vzhľad vozidla. Detail, ktorý má zmysel na ceste aj na pohľad.
               </motion.p>
+
+              {/* Quote */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.0, delay: 0.9 }}
+                className="mb-10"
+              >
+                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl text-white italic font-serif font-light max-w-xl">
+                  "Svetlá robia rozdiel"
+                </p>
+              </motion.div>
 
               {/* CTA Button */}
               <motion.div

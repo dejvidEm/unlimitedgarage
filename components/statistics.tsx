@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 const stats = [
   { value: "200+", label: "Spokojných klientov" },
-  { value: "7", label: "Rokov skúseností" },
+  { value: "3", label: "Rokov skúseností" },
   { value: "500+", label: "Repasovaných svetiel" },
 ]
 

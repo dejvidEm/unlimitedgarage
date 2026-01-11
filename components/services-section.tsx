@@ -44,7 +44,7 @@ export function ServicesSection() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -52,7 +52,7 @@ export function ServicesSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -4 }}
-              className="group relative p-6 rounded-2xl bg-card border border-border shadow-sm hover:shadow-md transition-all duration-300"
+              className="group relative p-6 rounded-2xl bg-card border border-border shadow-sm hover:shadow-md transition-all duration-300 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
             >
               <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                 <service.icon className="w-6 h-6" />

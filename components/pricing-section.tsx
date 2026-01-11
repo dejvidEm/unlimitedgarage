@@ -7,7 +7,7 @@ const services = [
   { name: "Repas a oprava svetlometov", price: "na dopyt" },
   { name: "Vymena plexiskla svetlometov", price: "od 120€/ks" },
   { name: "Oprava denneho svietenia", price: "na dopyt" },
-  { name: "Oprava ostatných porúch svetlometov", price: "na dopyt" },
+  { name: "Oprava ostatných porúch predných svetlometov", price: "na dopyt" },
   { name: "Polymerizácia/Leštenie svetlometov", price: "30€/ks" },
   { name: "UV Ochrana svetlometov", price: "od 10€/ks" },
   { name: "Inštalácia ambient osvetlenia", price: "od 300€" },
