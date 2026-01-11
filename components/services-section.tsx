@@ -9,7 +9,7 @@ const services = [
     icon: Lightbulb,
     title: "Opravy a repasy svetiel",
     description:
-      "Diagnostika, oprava a obnova predných aj zadných svetiel vrátane zlepšenia funkčnosti a vzhľadu.",
+      "Diagnostika, oprava a obnova predných svetiel vrátane zlepšenia funkčnosti a vzhľadu.",
   },
   {
     icon: Wrench,
