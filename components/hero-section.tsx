@@ -171,7 +171,7 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="lg:hidden flex items-center justify-center py-8 relative z-[9999]"
+        className="lg:hidden flex items-center justify-center py-8 relative z-[40]"
       >
         <div className="relative w-full flex items-center justify-center px-6">
           <img
