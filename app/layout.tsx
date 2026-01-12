@@ -29,9 +29,9 @@ const sourceSerif = Source_Serif_4({
 })
 
 export const metadata: Metadata = {
-  title: "Unlimited garage | Prémiový mobilný detailing áut",
-  description:
-    "Profesionálne mobilné detailingové služby. Prídeme k vám s prémiovými produktmi a starostlivou ručnou prácou pre dokonalý výsledok.",
+  title: "Unlimited Garage | Repasy svetiel & prémiové ambientné osvetlenie",
+description:
+  "Profesionálne repasy svetiel, montáž hviezdnych stropov a ambientného osvetlenia. Precízna ručná práca a kvalitné komponenty pre luxusný vzhľad vášho vozidla.",
   generator: "v0.app",
   icons: {
     icon: [
