@@ -6,16 +6,47 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { CheckCircle2 } from "lucide-react"
+import { CheckCircle2, Loader2 } from "lucide-react"
 
 export function ContactSection() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [formData, setFormData] = useState({
+    name: "",
+    contact: "",
+    message: "",
+  })
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setIsSubmitted(true)
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Nepodarilo sa odoslať požiadavku")
+      }
+
+      setIsSubmitted(true)
+      setFormData({ name: "", contact: "", message: "" })
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Nastala chyba pri odosielaní")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -49,25 +80,61 @@ export function ContactSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {error && (
+                  <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm">
+                    {error}
+                  </div>
+                )}
                 <div className="space-y-2">
                   <Label htmlFor="name">Meno</Label>
-                  <Input id="name" placeholder="Vaše meno" required className="rounded-xl h-12" />
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="Vaše meno"
+                    required
+                    className="rounded-xl h-12"
+                    disabled={isLoading}
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="contact">Telefón alebo email</Label>
-                  <Input id="contact" placeholder="Ako vás môžeme kontaktovať?" required className="rounded-xl h-12" />
+                  <Input
+                    id="contact"
+                    name="contact"
+                    type="text"
+                    value={formData.contact}
+                    onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
+                    placeholder="Ako vás môžeme kontaktovať?"
+                    required
+                    className="rounded-xl h-12"
+                    disabled={isLoading}
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="message">Správa</Label>
                   <Textarea
                     id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Popíšte vaše vozidlo a preferovanú službu..."
                     rows={4}
                     className="rounded-xl resize-none"
+                    required
+                    disabled={isLoading}
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full rounded-full">
-                  Odoslať požiadavku
+                <Button type="submit" size="lg" className="w-full rounded-full" disabled={isLoading}>
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Odosielanie...
+                    </>
+                  ) : (
+                    "Odoslať požiadavku"
+                  )}
                 </Button>
               </form>
             )}
