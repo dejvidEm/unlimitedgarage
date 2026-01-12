@@ -27,9 +27,10 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(apiKey)
 
     // Send email using Resend
+    // Note: Using verified email for now. To send to info@unlimitedgarage.sk, verify your domain in Resend
     const { data, error } = await resend.emails.send({
-      from: 'Unlimited garage <onboarding@resend.dev>', // Update this with your verified domain
-      to: ['info@unlimitedgarage.sk'], // Update with your email
+      from: 'onboarding@resend.dev', // Using Resend's default - update after domain verification
+      to: ['unlimitedgarage.galanta@gmail.com'], // Using verified email - change to info@unlimitedgarage.sk after domain verification
       subject: `Nová požiadavka od ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -60,9 +61,12 @@ Tento email bol odoslaný z kontaktného formulára na webovej stránke Unlimite
     })
 
     if (error) {
-      console.error('Resend error:', error)
+      console.error('Resend error:', JSON.stringify(error, null, 2))
       return NextResponse.json(
-        { error: 'Nepodarilo sa odoslať email' },
+        { 
+          error: 'Nepodarilo sa odoslať email',
+          details: process.env.NODE_ENV === 'development' ? error : undefined
+        },
         { status: 500 }
       )
     }
@@ -73,8 +77,17 @@ Tento email bol odoslaný z kontaktného formulára na webovej stránke Unlimite
     )
   } catch (error) {
     console.error('API error:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    const errorStack = error instanceof Error ? error.stack : undefined
+    
     return NextResponse.json(
-      { error: 'Nastala chyba pri spracovaní požiadavky' },
+      { 
+        error: 'Nastala chyba pri spracovaní požiadavky',
+        details: process.env.NODE_ENV === 'development' ? {
+          message: errorMessage,
+          stack: errorStack
+        } : undefined
+      },
       { status: 500 }
     )
   }

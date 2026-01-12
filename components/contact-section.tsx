@@ -37,12 +37,16 @@ export function ContactSection() {
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.error || "Nepodarilo sa odoslať požiadavku")
+        // Show more detailed error message
+        const errorMsg = data.error || "Nepodarilo sa odoslať požiadavku"
+        const details = data.details ? ` (${JSON.stringify(data.details)})` : ""
+        throw new Error(errorMsg + details)
       }
 
       setIsSubmitted(true)
       setFormData({ name: "", contact: "", message: "" })
     } catch (err) {
+      console.error("Contact form error:", err)
       setError(err instanceof Error ? err.message : "Nastala chyba pri odosielaní")
     } finally {
       setIsLoading(false)
