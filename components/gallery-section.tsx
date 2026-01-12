@@ -1,9 +1,10 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useInView } from "framer-motion"
-import { useRef } from "react"
-import { Sparkles, Shield, Clock, Award, Star } from "lucide-react"
+import { useRef, useState } from "react"
+import { Sparkles, Shield, Clock, Award, Star, ChevronDown } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 const galleryItems = [
   {
@@ -50,10 +51,46 @@ const galleryItems = [
   },
 ]
 
-function GalleryCard({ item, index }: { item: (typeof galleryItems)[0]; index: number }) {
+const additionalGalleryItems = [
+  {
+    image: "/new.png",
+    title: "Repas svetlometov",
+    className: "md:col-span-1 md:row-span-1",
+  },
+  {
+    image: "/new2.png",
+    title: "Repas svetlometov",
+    className: "md:col-span-1 md:row-span-2",
+  },
+  {
+    image: "/new3.png",
+    title: "Renovácia svetiel",
+    className: "md:col-span-2 md:row-span-1",
+  },
+  {
+    image: "/new4.png",
+    title: "Repas svetlometov",
+    className: "md:col-span-1 md:row-span-1",
+  },
+  {
+    image: "/before.png",
+    title: "Výmena žiaroviek za LED",
+    className: "md:col-span-1 md:row-span-1",
+    textPosition: "top" as const,
+  },
+  {
+    image: "/before2.png",
+    title: "Výmena žiaroviek za LED",
+    className: "md:col-span-2 md:row-span-2",
+    textPosition: "top" as const,
+  },
+]
+
+function GalleryCard({ item, index, showBadge = true }: { item: (typeof galleryItems)[0] | (typeof additionalGalleryItems)[0]; index: number; showBadge?: boolean }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const BadgeIcon = item.badgeIcon
+  const BadgeIcon = 'badgeIcon' in item ? item.badgeIcon : null
+  const textPosition = 'textPosition' in item ? item.textPosition : 'bottom'
 
   return (
     <motion.div
@@ -73,26 +110,28 @@ function GalleryCard({ item, index }: { item: (typeof galleryItems)[0]; index: n
         />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      <div className={`absolute inset-0 ${textPosition === 'top' ? 'bg-gradient-to-b from-black/80 via-black/20 to-transparent' : 'bg-gradient-to-t from-black/80 via-black/20 to-transparent'}`} />
 
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-        transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-        className="absolute top-4 right-4 z-10"
-      >
-        <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1.5">
-          <BadgeIcon className="w-3.5 h-3.5 text-white" />
-          <span className="text-xs font-medium text-white">{item.badge}</span>
-        </div>
-      </motion.div>
+      {showBadge && 'badge' in item && item.badge && BadgeIcon && (
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+          transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+          className="absolute top-4 right-4 z-10"
+        >
+          <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1.5">
+            <BadgeIcon className="w-3.5 h-3.5 text-white" />
+            <span className="text-xs font-medium text-white">{item.badge}</span>
+          </div>
+        </motion.div>
+      )}
 
-      <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+      <div className={`absolute ${textPosition === 'top' ? 'top-0' : 'bottom-0'} left-0 right-0 p-6 z-10`}>
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-          className="text-xl md:text-2xl font-semibold text-white mb-2"
+          className={`text-xl md:text-2xl font-semibold text-white ${textPosition === 'top' ? 'mt-2' : 'mb-2'}`}
         >
           {item.title}
         </motion.h3>
@@ -117,6 +156,7 @@ function GalleryCard({ item, index }: { item: (typeof galleryItems)[0]; index: n
 export function GallerySection() {
   const headerRef = useRef(null)
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" })
+  const [showMore, setShowMore] = useState(false)
 
   return (
     <section id="gallery" className="py-24 md:py-32 bg-muted/30">
@@ -153,9 +193,46 @@ export function GallerySection() {
 
         <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[250px] gap-4">
           {galleryItems.map((item, index) => (
-            <GalleryCard key={item.image} item={item} index={index} />
+            <GalleryCard key={item.image} item={item} index={index} showBadge={true} />
           ))}
         </div>
+
+        {/* Show More Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex justify-center mt-8"
+        >
+          <Button
+            onClick={() => setShowMore(!showMore)}
+            variant="outline"
+            className="bg-background border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary/50 rounded-lg px-8 h-12 text-base font-semibold flex items-center gap-2"
+          >
+            Zobraziť viac fotiek
+            <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${showMore ? 'rotate-180' : ''}`} />
+          </Button>
+        </motion.div>
+
+        {/* Additional Gallery Items */}
+        <AnimatePresence>
+          {showMore && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[250px] gap-4 mt-4">
+                {additionalGalleryItems.map((item, index) => (
+                  <GalleryCard key={item.image} item={item} index={index + galleryItems.length} showBadge={false} />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
