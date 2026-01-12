@@ -242,19 +242,14 @@ export function GallerySection() {
           className="text-center mt-12"
         >
           <p className="text-muted-foreground mb-4">Chcete vidieť viac? Sledujte nás na sociálnych sieťach.</p>
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center">
             <a
-              href="#"
+              href="https://www.instagram.com/un_limited_garage/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline underline-offset-4"
             >
               Instagram
-            </a>
-            <span className="text-muted-foreground">•</span>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline underline-offset-4"
-            >
-              Facebook
             </a>
           </div>
         </motion.div>

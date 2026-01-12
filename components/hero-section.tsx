@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Facebook, Instagram } from "lucide-react"
+import { Instagram } from "lucide-react"
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -11,9 +11,8 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 )
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: WhatsAppIcon, href: "#", label: "WhatsApp" },
+  { icon: Instagram, href: "https://www.instagram.com/un_limited_garage/", label: "Instagram" },
+  { icon: WhatsAppIcon, href: "https://wa.me/421951300838", label: "WhatsApp" },
 ]
 
 export function HeroSection() {
@@ -84,6 +83,8 @@ export function HeroSection() {
                   <motion.a
                     key={social.label}
                     href={social.href}
+                    target={social.href.startsWith('http') ? "_blank" : undefined}
+                    rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
@@ -163,6 +164,8 @@ export function HeroSection() {
             <motion.a
               key={social.label}
               href={social.href}
+              target={social.href.startsWith('http') ? "_blank" : undefined}
+              rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}

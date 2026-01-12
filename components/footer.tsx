@@ -1,7 +1,7 @@
 "use client"
 
 import { MapPin, Phone, Mail } from "lucide-react"
-import { Facebook, Instagram, Twitter } from "lucide-react"
+import { Instagram, Twitter } from "lucide-react"
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -25,10 +25,9 @@ const pageSections = [
 ]
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/un_limited_garage/", label: "Instagram" },
   { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: WhatsAppIcon, href: "#", label: "WhatsApp" },
+  { icon: WhatsAppIcon, href: "https://wa.me/421951300838", label: "WhatsApp" },
   { icon: TelegramIcon, href: "#", label: "Telegram" },
 ]
 
@@ -106,6 +105,8 @@ export function Footer() {
                   <a
                     key={social.label}
                     href={social.href}
+                    target={social.href.startsWith('http') ? "_blank" : undefined}
+                    rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
                     className="w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-background transition-colors text-muted-foreground"
                     aria-label={social.label}
                   >
