@@ -1,8 +1,6 @@
 import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
@@ -15,6 +13,18 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
+
+    // Initialize Resend only when needed (at runtime, not build time)
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.error('RESEND_API_KEY is not set')
+      return NextResponse.json(
+        { error: 'Email služba nie je nakonfigurovaná' },
+        { status: 500 }
+      )
+    }
+
+    const resend = new Resend(apiKey)
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
