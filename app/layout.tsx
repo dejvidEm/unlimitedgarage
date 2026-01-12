@@ -63,8 +63,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="sk" className="scroll-smooth dark" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} font-sans antialiased`}>
+    <html lang="sk" className="scroll-smooth dark overflow-x-hidden" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} font-sans antialiased overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
         </ThemeProvider>

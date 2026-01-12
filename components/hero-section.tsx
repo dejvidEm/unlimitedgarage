@@ -154,7 +154,7 @@ export function HeroSection() {
       </div>
 
       {/* Social Media Icons - Mobile: Between Text and Image */}
-      <div className="flex lg:hidden justify-center py-6 gap-4 z-20 relative">
+      <div className="flex lg:hidden justify-center py-6 gap-4 z-[42] relative">
         {/* Horizontal line left */}
         <div className="h-0.5 w-12 bg-primary self-center"></div>
         
